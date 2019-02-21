@@ -9,7 +9,8 @@ const {app, router} = bootstrapKoaApp();
 const agenda = new Agenda({
   db: {
     address: settings.agendaMongoUrl,
-    collection: settings.collection
+    collection: settings.collection,
+    options: JSON.parse(settings.dbOptions)
   }
 });
 
