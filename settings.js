@@ -1,24 +1,23 @@
-let dbname = process.env.DB_NAME || 'agenda';
-let dbhost = process.env.DB_HOST || 'localhost';
-let collection = 'agendaJobs';
-let definitions = 'jobDefinitions';
+require("dotenv").config();
+
+let dbURI = process.env.dbURI || "mongodb://localhost/agenda";
+let dbOptions = process.env.dbOptions || "";
+let collection = process.env.dbCollection || "agendaJobs";
+let definitions = "jobDefinitions";
 let timeout = 5000;
 
 const settings = {
   get agendaMongoUrl() {
-    return `mongodb://${dbhost}/${dbname}`;
+    return dbURI;
   },
-  get dbname() {
-    return dbname;
+  set agendaMongoUrl(value) {
+    dbURI = value;
   },
-  set dbname(value) {
-    dbname = value;
+  get dbOptions() {
+    return dbOptions;
   },
-  get dbhost() {
-    return dbhost;
-  },
-  set dbhost(value) {
-    dbhost = value;
+  set dbOptions(value) {
+    dbOptions = value;
   },
   get collection() {
     return collection;
